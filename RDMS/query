@@ -1,0 +1,40 @@
+CRAETE DATABASE RDMS;
+
+CREATE TABLE paymentMethods (
+    id int AUTO_INCREMENT,
+    paymentMethod varchar(255),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE orders (
+    id int AUTO_INCREMENT,
+    paymentMethod int,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO paymentMethods(paymentMethod) VALUES('Cash');
+INSERT INTO paymentMethods(paymentMethod) VALUES('Checks');
+INSERT INTO paymentMethods(paymentMethod) VALUES('Debit Card');
+INSERT INTO paymentMethods(paymentMethod) VALUES('Credit Card');
+INSERT INTO paymentMethods(paymentMethod) VALUES('Electronic Bank Transfer');
+INSERT INTO paymentMethods(paymentMethod) VALUES('Paypal');
+INSERT INTO paymentMethods(paymentMethod) VALUES('Mobile Payment');
+
+INSERT INTO orders(paymentMethod) VALUES(5); -- Electronic Bank Transfer
+INSERT INTO orders(paymentMethod) VALUES(2); -- Checks
+INSERT INTO orders(paymentMethod) VALUES(7); -- Mobile Payment
+INSERT INTO orders(paymentMethod) VALUES(4); -- Credit Card
+INSERT INTO orders(paymentMethod) VALUES(2); -- Checks
+INSERT INTO orders(paymentMethod) VALUES(5); -- Electronic Bank Transfer
+INSERT INTO orders(paymentMethod) VALUES(1); -- Cash
+INSERT INTO orders(paymentMethod) VALUES(6); -- Paypal
+INSERT INTO orders(paymentMethod) VALUES(3); -- Debit Card
+INSERT INTO orders(paymentMethod) VALUES(5); -- Electronic Bank Transfer
+INSERT INTO orders(paymentMethod) VALUES(4); -- Credit Card
+INSERT INTO orders(paymentMethod) VALUES(7); -- Mobile Payment
+
+SELECT orders.id AS 'ORDER ID',
+	   paymentmethods.paymentMethod AS 'PAYMMENT METHOD'
+FROM orders 
+JOIN paymentmethods 
+ON orders.paymentMethod = paymentmethods.id;
